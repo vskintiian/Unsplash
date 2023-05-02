@@ -24,3 +24,5 @@ public final class PhotoListFlowComponent: Component<PhotoListFlowDependency> {
 extension PhotoListFlowComponent: PhotoListDependency {
     var apiService: APIServicing { dependency.apiService }
 }
+
+extension PhotoListFlowComponent: PhotoDetailsDependency { }

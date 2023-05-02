@@ -12,24 +12,53 @@ import Extensions
 
 final class PhotoListCell: UICollectionViewCell {
     struct ViewModel: Hashable {
+        static func == (lhs: PhotoListCell.ViewModel, rhs: PhotoListCell.ViewModel) -> Bool {
+            lhs.title == rhs.title && lhs.imageURL == rhs.imageURL
+        }
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(title)
+            hasher.combine(imageURL)
+        }
+
         let title: String
-        let imageURL: URL
+        let imageURL: URL?
+        let action: () -> Void
     }
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
 
     private var cancellables = Set<AnyCancellable>()
+    private var action: (() -> Void)?
 
-    func configure(_ viewModel: ViewModel) {
-        titleLabel.text = viewModel.title
+    override var isSelected: Bool {
+        didSet {
+            guard isSelected else { return }
+            action?()
+        }
+    }
 
-        imageView.fetchImage(with: viewModel.imageURL)
-            .store(in: &cancellables)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.layer.cornerRadius = imageView.frame.width / 2
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         cancellables.removeAll()
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageView.contentMode = .scaleAspectFill
+    }
+
+    func configure(_ viewModel: ViewModel) {
+        titleLabel.text = viewModel.title
+        action = viewModel.action
+
+        guard let imageURL = viewModel.imageURL else { return }
+        imageView.fetchImage(with: imageURL).store(in: &cancellables)
     }
 }

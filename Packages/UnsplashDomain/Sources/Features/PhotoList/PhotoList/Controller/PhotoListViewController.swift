@@ -131,7 +131,7 @@ extension PhotoListViewController: SearchBarViewDelegate {
 
 extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
     private enum Constants {
-        static let photoListCellHeight: CGFloat = 120
+        static let photoListCellHeight: CGFloat = 100
         static let defaultHeaderHeight: CGFloat = 44
     }
 

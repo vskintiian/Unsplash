@@ -6,12 +6,19 @@
 //
 
 import Foundation
+import UnsplashCore
 
-protocol PhotoDetailsUseCaseType { }
+protocol PhotoDetailsUseCaseType {
+    var photo: PhotoDTO { get }
+}
 
 final class PhotoDetailsUseCase: PhotoDetailsUseCaseType {
 
-    init() { }
-
     // MARK: - PhotoDetailsUseCaseType
+
+    let photo: PhotoDTO
+
+    init(photo: PhotoDTO) {
+        self.photo = photo
+    }
 }

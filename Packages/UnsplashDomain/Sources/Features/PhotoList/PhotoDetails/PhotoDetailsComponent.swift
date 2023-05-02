@@ -7,13 +7,14 @@
 
 import RIBs
 import Foundation
+import UnsplashCore
 
 protocol PhotoDetailsDependency: Dependency { }
 
 final class PhotoDetailsComponent: Component<PhotoDetailsDependency> {
-    func useCase() -> PhotoDetailsUseCaseType {
+    func useCase(photo: PhotoDTO) -> PhotoDetailsUseCaseType {
         shared {
-            PhotoDetailsUseCase()
+            PhotoDetailsUseCase(photo: photo)
         }
     }
 }

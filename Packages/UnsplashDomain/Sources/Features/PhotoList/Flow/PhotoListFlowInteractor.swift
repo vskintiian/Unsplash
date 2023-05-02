@@ -7,9 +7,11 @@
 
 import RIBs
 import Foundation
+import UnsplashCore
 
 public protocol PhotoListFlowRouting: ViewableFlowRouting {
     func routeToPhotoList()
+    func routeToPhotoDetails(_ photo: PhotoDTO)
 }
 
 protocol PhotoListFlowPresentable: AnyObject {
@@ -57,6 +59,17 @@ public final class PhotoListFlowInteractor: FlowInteractor, PhotoListFlowInterac
 
 extension PhotoListFlowInteractor {
     func processPhotoListFeedback(_ feedback: PhotoListFeedback) {
+        switch feedback {
+        case .didSelectItem(let photo):
+            router?.routeToPhotoDetails(photo)
+        }
+    }
+}
+
+// MARK: - PhotoDetailsListener
+
+extension PhotoListFlowInteractor {
+    func processPhotoDetailsFeedback(_ feedback: PhotoDetailsFeedback) {
         switch feedback { }
     }
 }

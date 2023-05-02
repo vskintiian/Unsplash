@@ -8,6 +8,7 @@
 import RIBs
 import Combine
 import Foundation
+import UnsplashCore
 
 protocol PhotoListRouting: ViewableRouting { }
 
@@ -26,7 +27,9 @@ final class PhotoListInteractor: PresentableInteractor<PhotoListPresentable>,
 
     // MARK: - Nested types
 
-    enum Feedback { }
+    enum Feedback {
+        case didSelectItem(PhotoDTO)
+    }
 
     private enum Constants {
         static let loadingOffset = 10
@@ -88,8 +91,14 @@ final class PhotoListInteractor: PresentableInteractor<PhotoListPresentable>,
     // MARK: - Private
 
     private func setStartedState(_ newState: PhotoListUseCase.StartedState) {
-        let resourceItems: [PhotoListCell.ViewModel] = newState.items.map {
-            PhotoListCell.ViewModel(title: $0.description ?? $0.altDescription ?? "", imageURL: URL(string: $0.urls.thumb)!)
+        let resourceItems: [PhotoListCell.ViewModel] = newState.items.map { photo in
+            PhotoListCell.ViewModel(
+                title: photo.description ?? photo.altDescription ?? "",
+                imageURL: URL(string: photo.urls.thumb),
+                action: { [weak self] in
+                    self?.listener?.processPhotoListFeedback(.didSelectItem(photo))
+                }
+            )
         }
 
         state.send(.started(.init(searchText: newState.searchText, resourceItems: resourceItems)))

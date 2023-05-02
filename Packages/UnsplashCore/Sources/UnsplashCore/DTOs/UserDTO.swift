@@ -9,7 +9,7 @@ import Foundation
 
 public struct UserDTO: Decodable, Equatable {
     public struct ProfileImage: Decodable, Equatable {
-        let small, medium, large: String
+        public let small, medium, large: String
     }
 
     public let id: String

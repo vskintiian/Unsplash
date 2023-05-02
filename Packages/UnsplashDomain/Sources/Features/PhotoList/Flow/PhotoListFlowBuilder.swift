@@ -29,7 +29,8 @@ public final class PhotoListFlowBuilder: Builder<PhotoListFlowDependency>, Photo
         return PhotoListFlowRouter(
             interactor: interactor,
             viewController: navigationFlowController,
-            photoListBuilder: PhotoListBuilder(dependency: component)
+            photoListBuilder: PhotoListBuilder(dependency: component),
+            photoDetailsBuilder: PhotoDetailsBuilder(dependency: component)
         )
     }
 }
