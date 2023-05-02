@@ -4,6 +4,7 @@
 import PackageDescription
 
 let ribs = Target.Dependency(stringLiteral: "RIBs")
+let core = Target.Dependency(stringLiteral: "UnsplashCore")
 
 let package = Package(
     name: "UnsplashDomain",
@@ -22,14 +23,16 @@ let package = Package(
         .target(
             name: "DI",
             dependencies: [
-                "UnsplashCore",
                 "Root",
+                core,
                 ribs
             ]
         ),
         .target(
             name: "Extensions",
-            dependencies: []
+            dependencies: [
+                core
+            ]
         ),
         .target(
             name: "Root",
