@@ -57,6 +57,7 @@ final class PhotoListViewController: UIViewController, PhotoListPresentable, Pho
     }
 
     private func setupUI() {
+        title = "Unsplash search"
         setupCollectionView()
     }
 

@@ -15,9 +15,7 @@ public protocol PhotoListFlowDependency: Dependency {
 
 public final class PhotoListFlowComponent: Component<PhotoListFlowDependency> {
     public func useCase() -> PhotoListFlowUseCaseType {
-        shared {
-            PhotoListFlowUseCase()
-        }
+        shared { PhotoListFlowUseCase() }
     }
 }
 

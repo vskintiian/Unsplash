@@ -15,19 +15,19 @@ protocol SearchBarViewDelegate {
 final class SearchBarReusableView: UICollectionReusableView {
     private var delegate: SearchBarViewDelegate?
 
-    let searchBarView: UISearchBar = {
-            let searchBar = UISearchBar()
-            searchBar.tintColor = UIColor.black.withAlphaComponent(1.0)
-            searchBar.placeholder = "Search..."
-            searchBar.backgroundColor = UIColor.clear
-            searchBar.barTintColor = UIColor.clear
-            searchBar.searchBarStyle = .minimal
-            searchBar.returnKeyType = .search
-            searchBar.showsCancelButton = false
-            searchBar.showsBookmarkButton = false
+    private lazy var searchBarView: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.tintColor = UIColor.black
+        searchBar.placeholder = "Search..."
+        searchBar.backgroundColor = UIColor.clear
+        searchBar.barTintColor = UIColor.clear
+        searchBar.searchBarStyle = .minimal
+        searchBar.returnKeyType = .search
+        searchBar.showsCancelButton = false
+        searchBar.showsBookmarkButton = false
 
-            return searchBar
-        }()
+        return searchBar
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

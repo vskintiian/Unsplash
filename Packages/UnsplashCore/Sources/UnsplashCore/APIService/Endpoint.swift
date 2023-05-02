@@ -42,8 +42,7 @@ extension Endpoint {
         let queryItems = [
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "query", value: query),
-//            URLQueryItem(name: "client_id", value: "c99a7e7599297260b46b7c9cf36727badeb1d37b1f24aa9ef5d844e3fbed76fe")
-            URLQueryItem(name: "client_id", value: "4kKmIarxA1L0x6pem3j01eAwORgfipO2Lz2yRBPyhWs")
+            URLQueryItem(name: "client_id", value: "c99a7e7599297260b46b7c9cf36727badeb1d37b1f24aa9ef5d844e3fbed76fe")
         ]
         
         return Endpoint(path: "search/photos", queryItems: queryItems)

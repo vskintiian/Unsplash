@@ -18,6 +18,7 @@ final class PhotoDetailsViewController: UIViewController, PhotoDetailsPresentabl
     // MARK: - Nested Types
 
     struct ViewModel {
+        let screenTitle: String
         let photoImageURL: URL
         let userImageURL: URL
         let photoDescription: String
@@ -45,6 +46,7 @@ final class PhotoDetailsViewController: UIViewController, PhotoDetailsPresentabl
     private func setupUI() {
         guard let viewModel = listener?.viewModel else { return }
 
+        title = viewModel.screenTitle
         photoImageView.fetchImage(with: viewModel.photoImageURL).store(in: &cancellables)
         userImageView.fetchImage(with: viewModel.userImageURL).store(in: &cancellables)
         photoDescriptionLabel.text = viewModel.photoDescription

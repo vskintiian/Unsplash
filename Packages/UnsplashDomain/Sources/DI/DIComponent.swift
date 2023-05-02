@@ -8,8 +8,8 @@
 import RIBs
 import Root
 import UIKit
-import UnsplashCore
 import Extensions
+import UnsplashCore
 
 public final class DIComponent: Component<EmptyDependency>, RootDependency {
     public var apiService: APIServicing {
@@ -17,14 +17,11 @@ public final class DIComponent: Component<EmptyDependency>, RootDependency {
     }
 
     private var imageFetchService: ImageFetchServicing {
-        shared {
-            ImageFetchService()
-        }
+        shared { ImageFetchService() }
     }
 
     public init() {
         super.init(dependency: EmptyComponent())
-
         UIImageView.imageFetchService = imageFetchService
     }
 }

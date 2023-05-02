@@ -25,6 +25,8 @@ final class PhotoDetailsInteractor: PresentableInteractor<PhotoDetailsPresentabl
 
     // MARK: - Nested types
 
+    typealias ViewModel = PhotoDetailsViewController.ViewModel
+
     enum Feedback { }
 
     weak var router: PhotoDetailsRouting?
@@ -34,11 +36,12 @@ final class PhotoDetailsInteractor: PresentableInteractor<PhotoDetailsPresentabl
 
     // MARK: - PhotoDetailsPresentableListener
 
-    var viewModel: PhotoDetailsViewController.ViewModel? {
+    var viewModel: ViewModel? {
         guard let photoImageURL = URL(string: useCase.photo.urls.regular),
               let userImageURL = URL(string: useCase.photo.user.profileImage.medium) else { return nil }
 
         return .init(
+            screenTitle: "Photo Details",
             photoImageURL: photoImageURL,
             userImageURL: userImageURL,
             photoDescription: useCase.photo.description ?? useCase.photo.altDescription ?? "No description 😔",
