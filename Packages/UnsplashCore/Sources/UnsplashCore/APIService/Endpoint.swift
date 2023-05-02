@@ -39,7 +39,7 @@ extension Endpoint: URLProvidable {
 
 extension Endpoint {
     static func photos(page: Int, query: String) -> Self {
-        var queryItems = [
+        let queryItems = [
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "query", value: query),
             URLQueryItem(name: "client_id", value: "c99a7e7599297260b46b7c9cf36727badeb1d37b1f24aa9ef5d844e3fbed76fe")

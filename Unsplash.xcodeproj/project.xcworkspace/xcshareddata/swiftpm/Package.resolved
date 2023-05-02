@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "ribs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vskintiian/RIBs",
+      "state" : {
+        "revision" : "52df5b231b92d37e3d7206ca80ce925842b080f4",
+        "version" : "0.13.17"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -14,7 +14,8 @@
 		DBE38F392A013FC50027A482 /* UnsplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE38F382A013FC50027A482 /* UnsplashTests.swift */; };
 		DBE38F432A013FC50027A482 /* UnsplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE38F422A013FC50027A482 /* UnsplashUITests.swift */; };
 		DBE38F452A013FC50027A482 /* UnsplashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE38F442A013FC50027A482 /* UnsplashUITestsLaunchTests.swift */; };
-		DBE38F582A0143E30027A482 /* UnsplashCore in Frameworks */ = {isa = PBXBuildFile; productRef = DBE38F572A0143E30027A482 /* UnsplashCore */; };
+		DBE38F5D2A015D730027A482 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = DBE38F5C2A015D730027A482 /* DI */; };
+		DBE38F5F2A015D8D0027A482 /* Root in Frameworks */ = {isa = PBXBuildFile; productRef = DBE38F5E2A015D8D0027A482 /* Root */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DBE38F422A013FC50027A482 /* UnsplashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashUITests.swift; sourceTree = "<group>"; };
 		DBE38F442A013FC50027A482 /* UnsplashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBE38F552A0143910027A482 /* UnsplashCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UnsplashCore; path = Packages/UnsplashCore; sourceTree = "<group>"; };
+		DBE38F5B2A015A6F0027A482 /* UnsplashDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UnsplashDomain; path = Packages/UnsplashDomain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBE38F582A0143E30027A482 /* UnsplashCore in Frameworks */,
+				DBE38F5F2A015D8D0027A482 /* Root in Frameworks */,
+				DBE38F5D2A015D730027A482 /* DI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +81,7 @@
 		DBE38F152A013FC50027A482 = {
 			isa = PBXGroup;
 			children = (
+				DBE38F5B2A015A6F0027A482 /* UnsplashDomain */,
 				DBE38F552A0143910027A482 /* UnsplashCore */,
 				DBE38F202A013FC50027A482 /* Unsplash */,
 				DBE38F372A013FC50027A482 /* UnsplashTests */,
@@ -166,7 +170,8 @@
 			);
 			name = Unsplash;
 			packageProductDependencies = (
-				DBE38F572A0143E30027A482 /* UnsplashCore */,
+				DBE38F5C2A015D730027A482 /* DI */,
+				DBE38F5E2A015D8D0027A482 /* Root */,
 			);
 			productName = Unsplash;
 			productReference = DBE38F1E2A013FC50027A482 /* Unsplash.app */;
@@ -456,7 +461,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Unsplash/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -488,7 +493,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Unsplash/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -627,9 +632,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DBE38F572A0143E30027A482 /* UnsplashCore */ = {
+		DBE38F5C2A015D730027A482 /* DI */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = UnsplashCore;
+			productName = DI;
+		};
+		DBE38F5E2A015D8D0027A482 /* Root */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Root;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
