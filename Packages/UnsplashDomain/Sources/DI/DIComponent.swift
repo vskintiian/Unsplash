@@ -7,15 +7,24 @@
 
 import RIBs
 import Root
+import UIKit
 import UnsplashCore
+import Extensions
 
 public final class DIComponent: Component<EmptyDependency>, RootDependency {
-    var apiService: APIServicing {
+    public var apiService: APIServicing {
+        shared { APIService() }
+    }
+
+    private var imageFetchService: ImageFetchServicing {
         shared {
-            APIService()
+            ImageFetchService()
         }
     }
+
     public init() {
         super.init(dependency: EmptyComponent())
+
+        UIImageView.imageFetchService = imageFetchService
     }
 }

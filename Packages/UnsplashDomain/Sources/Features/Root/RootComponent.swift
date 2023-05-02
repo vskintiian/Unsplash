@@ -6,9 +6,13 @@
 //
 
 import RIBs
+import PhotoList
 import Foundation
+import UnsplashCore
 
-public protocol RootDependency: Dependency { }
+public protocol RootDependency: Dependency {
+    var apiService: APIServicing { get }
+}
 
 public final class RootComponent: Component<RootDependency> {
     public func useCase() -> RootUseCaseType {
@@ -16,4 +20,8 @@ public final class RootComponent: Component<RootDependency> {
             RootUseCase()
         }
     }
+}
+
+extension RootComponent: PhotoListFlowDependency {
+    public var apiService: APIServicing { dependency.apiService }
 }

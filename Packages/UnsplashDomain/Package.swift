@@ -7,10 +7,12 @@ let ribs = Target.Dependency(stringLiteral: "RIBs")
 
 let package = Package(
     name: "UnsplashDomain",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v14)],
     products: [
         .library(name: "DI", targets: ["DI"]),
+        .library(name: "Extensions", targets: ["Extensions"]),
         .library(name: "Root", targets: ["Root"]),
+        .library(name: "PhotoList", targets: ["PhotoList"])
     ],
     dependencies: [
         .package(path: "../UnsplashCore"),
@@ -26,11 +28,24 @@ let package = Package(
             ]
         ),
         .target(
+            name: "Extensions",
+            dependencies: []
+        ),
+        .target(
             name: "Root",
             dependencies: [
-                ribs
+                ribs,
+                "PhotoList"
             ],
             path: "Sources/Features/Root"
+        ),
+        .target(
+            name: "PhotoList",
+            dependencies: [
+                ribs,
+                "Extensions"
+            ],
+            path: "Sources/Features/PhotoList"
         ),
         .testTarget(
             name: "RootTests",

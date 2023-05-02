@@ -9,13 +9,13 @@ import Foundation
 
 public struct PhotoDTO: Decodable, Equatable {
     public struct ImageUrl: Decodable, Equatable {
-        let regular: String
-        let thumb: String
+        public let regular: String
+        public let thumb: String
     }
 
     public let id: String
     public let description: String?
-    public let altDescription: String
+    public let altDescription: String?
     public let urls: ImageUrl
     public let user: UserDTO
 

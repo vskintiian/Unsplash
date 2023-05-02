@@ -7,9 +7,11 @@
 
 import RIBs
 import Foundation
+import PhotoList
 
 public protocol RootRouting: Routing {
     func launch()
+    func routeToPhotoList()
 }
 
 public typealias RootFeedback = RootInteractor.Feedback
@@ -30,5 +32,14 @@ public final class RootInteractor: Interactor, RootInteractable {
 
     public override func didBecomeActive() {
         super.didBecomeActive()
+        router?.routeToPhotoList()
+    }
+}
+
+// MARK: - PhotoListFlowListener
+
+extension RootInteractor {
+    public func processPhotoListFeedback(_ feedback: PhotoListFlowFeedback) {
+        switch feedback { }
     }
 }

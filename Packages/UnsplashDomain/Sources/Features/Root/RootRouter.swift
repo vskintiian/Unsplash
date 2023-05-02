@@ -8,8 +8,9 @@
 import RIBs
 import UIKit
 import Foundation
+import PhotoList
 
-protocol RootInteractable: Interactable {
+protocol RootInteractable: Interactable, PhotoListFlowListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
@@ -20,13 +21,18 @@ final class RootRouter: ViewableRouter<RootInteractable, RootViewControllable>, 
 
     private class Stub: UIViewController, RootViewControllable {}
 
+    private let fadeTransition = UIWindow.Transition(duration: 0.2)
+
     private let window: UIWindow
+    private let photoListBuilder: PhotoListFlowBuildable
 
     init(
         window: UIWindow,
-        interactor: RootInteractable
+        interactor: RootInteractable,
+        photoListBuilder: PhotoListFlowBuildable
     ) {
         self.window = window
+        self.photoListBuilder = photoListBuilder
         super.init(interactor: interactor, viewController: Stub())
         interactor.router = self
     }
@@ -37,4 +43,12 @@ final class RootRouter: ViewableRouter<RootInteractable, RootViewControllable>, 
         load()
         interactor.activate()
     }
+
+    func routeToPhotoList() {
+        showAttached(
+            router: photoListBuilder.build(withListener: interactor),
+            with: .asRoot(in: window, with: fadeTransition)
+        )
+    }
+
 }

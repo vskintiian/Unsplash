@@ -8,6 +8,7 @@
 import RIBs
 import UIKit
 import Foundation
+import PhotoList
 
 // MARK: - Builder
 
@@ -24,6 +25,10 @@ public final class RootBuilder: Builder<RootDependency>, RootBuildable {
     public func build(with window: UIWindow) -> RootRouting {
         let component = RootComponent(dependency: dependency)
         let interactor = RootInteractor(useCase: component.useCase())
-        return RootRouter(window: window, interactor: interactor)
+        return RootRouter(
+            window: window,
+            interactor: interactor,
+            photoListBuilder: PhotoListFlowBuilder(dependency: component)
+        )
     }
 }
